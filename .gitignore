@@ -1,0 +1,108 @@
+# Python files in text_into_commands
+text_into_commands/__pycache__/
+text_into_commands/*.py[cod]
+text_into_commands/*$py.class
+text_into_commands/*.so
+text_into_commands/.Python
+text_into_commands/build/
+text_into_commands/develop-eggs/
+text_into_commands/dist/
+text_into_commands/downloads/
+text_into_commands/eggs/
+text_into_commands/.eggs/
+text_into_commands/lib/
+text_into_commands/lib64/
+text_into_commands/parts/
+text_into_commands/sdist/
+text_into_commands/var/
+text_into_commands/wheels/
+text_into_commands/*.egg-info/
+text_into_commands/.installed.cfg
+text_into_commands/*.egg
+
+# Poetry specific for text_into_commands
+text_into_commands/poetry.lock
+text_into_commands/.venv/
+text_into_commands/venv/
+text_into_commands/ENV/
+
+# IDE files in text_into_commands
+text_into_commands/.idea/
+text_into_commands/.vscode/
+text_into_commands/*.swp
+text_into_commands/*.swo
+
+# Misc files in text_into_commands
+text_into_commands/.DS_Store
+text_into_commands/.env
+text_into_commands/.coverage
+text_into_commands/htmlcov/
+
+# Python files in record_transcriber
+record_transcriber/__pycache__/
+record_transcriber/*.py[cod]
+record_transcriber/*$py.class
+record_transcriber/*.so
+record_transcriber/.Python
+record_transcriber/build/
+record_transcriber/develop-eggs/
+record_transcriber/dist/
+record_transcriber/downloads/
+record_transcriber/eggs/
+record_transcriber/.eggs/
+record_transcriber/lib/
+record_transcriber/lib64/
+record_transcriber/parts/
+record_transcriber/sdist/
+record_transcriber/var/
+record_transcriber/wheels/
+record_transcriber/*.egg-info/
+record_transcriber/.installed.cfg
+record_transcriber/*.egg
+
+# Poetry specific for record_transcriber
+record_transcriber/poetry.lock
+record_transcriber/.venv/
+record_transcriber/venv/
+record_transcriber/ENV/
+
+# IDE files in record_transcriber
+record_transcriber/.idea/
+record_transcriber/.vscode/
+record_transcriber/*.swp
+record_transcriber/*.swo
+
+# Misc files in record_transcriber
+record_transcriber/.DS_Store
+record_transcriber/.env
+record_transcriber/.coverage
+record_transcriber/htmlcov/
+
+# Node.js files in jarvis
+jarvis/node_modules/
+jarvis/npm-debug.log
+jarvis/yarn-debug.log*
+jarvis/yarn-error.log*
+jarvis/.pnpm-debug.log*
+jarvis/dist/
+jarvis/build/
+
+# Environment files in jarvis
+jarvis/.env
+jarvis/.env.local
+jarvis/.env.development
+jarvis/.env.test
+jarvis/.env.production
+
+# IDE files in jarvis
+jarvis/.idea/
+jarvis/.vscode/
+jarvis/*.swp
+jarvis/*.swo
+
+# Misc files in jarvis
+jarvis/.DS_Store
+jarvis/.cache/
+jarvis/coverage/
+jarvis/.next/
+jarvis/out/
