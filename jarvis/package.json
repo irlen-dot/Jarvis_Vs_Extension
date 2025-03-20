@@ -33,7 +33,7 @@
     "vscode:prepublish": "npm run package",
     "compile": "npm run check-types && npm run lint && node esbuild.js",
     "watch": "npm-run-all -p watch:*",
-    "watch:esbuild": "node esbuild.js --watch", 
+    "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && npm run lint && node esbuild.js --production",
     "compile-tests": "tsc -p . --outDir out",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/google-protobuf": "^3.15.12",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@types/vscode": "^1.98.0",
@@ -58,9 +59,17 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.13.0",
+    "@grpc/proto-loader": "^0.7.13",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
     "axios": "^1.8.3",
     "express": "^4.21.2",
     "fetch": "^1.1.0",
-    "generator-code": "^1.11.7"
+    "generator-code": "^1.11.7",
+    "google-protobuf": "^3.21.4",
+    "grpc-web": "^1.5.0",
+    "protobufjs": "^7.4.0",
+    "xhr2": "^0.2.1"
   }
 }

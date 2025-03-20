@@ -3,3 +3,5 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+
+# protoc --proto_path=../protos --js_out=import_style=commonjs,binary:./protos --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./protos ../protos/text_into_commands.proto

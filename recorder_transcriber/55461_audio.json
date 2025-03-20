@@ -1,0 +1,1 @@
+{"text": " Move the cursor to the second line", "segments": [{"id": 0, "seek": 0, "start": 0.0, "end": 4.0, "text": " Move the cursor to the second line", "tokens": [50364, 10475, 264, 28169, 281, 264, 1150, 1622, 50564], "temperature": 0.0, "avg_logprob": -0.486586856842041, "compression_ratio": 0.8947368421052632, "no_speech_prob": 0.0854969397187233}], "language": "en"}

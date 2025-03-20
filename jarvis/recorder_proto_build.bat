@@ -1,0 +1,1 @@
+npx proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=protos/ ../protos/record_transcriber.proto

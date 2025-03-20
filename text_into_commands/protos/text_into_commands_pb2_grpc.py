@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from protos import text_into_commands_pb2 as protos_dot_text__into__commands__pb2
+from protos import text_into_commands_pb2 as text__into__commands__pb2
 
 GRPC_GENERATED_VERSION = '1.71.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in protos/text_into_commands_pb2_grpc.py depends on'
+        + f' but the generated code in text_into_commands_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class TextToCommandsStub(object):
         """
         self.ConvertTextToCommands = channel.unary_unary(
                 '/text_to_commands.TextToCommands/ConvertTextToCommands',
-                request_serializer=protos_dot_text__into__commands__pb2.TextToCommandsRequest.SerializeToString,
-                response_deserializer=protos_dot_text__into__commands__pb2.TextToCommandsResponse.FromString,
+                request_serializer=text__into__commands__pb2.TextToCommandsRequest.SerializeToString,
+                response_deserializer=text__into__commands__pb2.TextToCommandsResponse.FromString,
                 _registered_method=True)
 
 
@@ -55,8 +55,8 @@ def add_TextToCommandsServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ConvertTextToCommands': grpc.unary_unary_rpc_method_handler(
                     servicer.ConvertTextToCommands,
-                    request_deserializer=protos_dot_text__into__commands__pb2.TextToCommandsRequest.FromString,
-                    response_serializer=protos_dot_text__into__commands__pb2.TextToCommandsResponse.SerializeToString,
+                    request_deserializer=text__into__commands__pb2.TextToCommandsRequest.FromString,
+                    response_serializer=text__into__commands__pb2.TextToCommandsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -84,8 +84,8 @@ class TextToCommands(object):
             request,
             target,
             '/text_to_commands.TextToCommands/ConvertTextToCommands',
-            protos_dot_text__into__commands__pb2.TextToCommandsRequest.SerializeToString,
-            protos_dot_text__into__commands__pb2.TextToCommandsResponse.FromString,
+            text__into__commands__pb2.TextToCommandsRequest.SerializeToString,
+            text__into__commands__pb2.TextToCommandsResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.record_transcriber";
+option java_outer_classname = "RecordTranscriberProto";
+option objc_class_prefix = "RT";
+
+package record_transcriber;
+
+service RecordTranscriber {
+    rpc RecordAndTranscribe(Empty) returns (RecordAndTranscribeResponse) {}
+}
+
+message Empty {}
+
+message RecordAndTranscribeResponse {
+    string transcribed_text = 1;
+    float confidence_score = 2;
+    string error_message = 3;
+}

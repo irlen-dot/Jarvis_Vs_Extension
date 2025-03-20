@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -IC:/Users/irlen/Documents/projects/AI/MAIN_JARVIS_ROOT/protos --python_out=./protos --grpc_python_out=./protos C:/Users/irlen/Documents/projects/AI/MAIN_JARVIS_ROOT/protos/record_transcriber.proto

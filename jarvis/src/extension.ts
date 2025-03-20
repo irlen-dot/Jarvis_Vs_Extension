@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 // import 
 import Express from 'express';
-import { startServer } from './server';
+import { listenToCommands } from './server';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "jarvis" is now active!');
 
-	
+
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
@@ -21,9 +21,10 @@ export function activate(context: vscode.ExtensionContext) {
 		// Get port from VS Code settings, fallback to 3000 if not set
 		const config = vscode.workspace.getConfiguration('jarvis');
 		const port = config.get('serverPort', 3000); // 3000 is the default value
-		
-		startServer(port);
-		
+
+
+		listenToCommands(port);
+
 		vscode.window.showInformationMessage(`Server started on port ${port}`);
 	});
 
@@ -31,4 +32,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

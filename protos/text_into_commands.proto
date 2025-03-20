@@ -1,0 +1,29 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.text_to_commands";
+option java_outer_classname = "TextToCommandsProto";
+option objc_class_prefix = "TTC";
+
+package text_to_commands;
+
+
+
+service TextToCommands {
+    rpc ConvertTextToCommands(TextToCommandsRequest) returns (TextToCommandsResponse) {}
+}
+
+message TextToCommandsRequest {
+    string text = 1;
+}
+
+message Command {
+    string type = 1;
+    string value = 2;
+    string date = 3;
+}
+
+message TextToCommandsResponse {
+    repeated Command commands = 1;
+}
