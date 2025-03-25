@@ -2,8 +2,8 @@
 
 import type * as grpc from '@grpc/grpc-js'
 import type { MethodDefinition } from '@grpc/proto-loader'
-import type { TextToCommandsRequest as _text_to_commands_TextToCommandsRequest, TextToCommandsRequest__Output as _text_to_commands_TextToCommandsRequest__Output } from './TextToCommandsRequest';
-import type { TextToCommandsResponse as _text_to_commands_TextToCommandsResponse, TextToCommandsResponse__Output as _text_to_commands_TextToCommandsResponse__Output } from './TextToCommandsResponse';
+import type { TextToCommandsRequest as _text_to_commands_TextToCommandsRequest, TextToCommandsRequest__Output as _text_to_commands_TextToCommandsRequest__Output } from '../text_to_commands/TextToCommandsRequest';
+import type { TextToCommandsResponse as _text_to_commands_TextToCommandsResponse, TextToCommandsResponse__Output as _text_to_commands_TextToCommandsResponse__Output } from '../text_to_commands/TextToCommandsResponse';
 
 export interface TextToCommandsClient extends grpc.Client {
   ConvertTextToCommands(argument: _text_to_commands_TextToCommandsRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_text_to_commands_TextToCommandsResponse__Output>): grpc.ClientUnaryCall;

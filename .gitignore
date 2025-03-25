@@ -1,5 +1,6 @@
 # Python files in text_into_commands
-text_into_commands/__pycache__/
+
+**/__pycache__/
 text_into_commands/*.py[cod]
 text_into_commands/*$py.class
 text_into_commands/*.so

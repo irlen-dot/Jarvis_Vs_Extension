@@ -2,7 +2,7 @@ from langchain.tools import tool
 
 
 # Global commands list
-commands = []
+commands = [{"value": "1", "date": None, "type": "cursor_movement_to_line"}]
 
 
 def _add_command(command_type, command_value, command_date=None):

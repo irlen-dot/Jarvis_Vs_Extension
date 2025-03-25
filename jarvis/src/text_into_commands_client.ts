@@ -1,7 +1,7 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import { ProtoGrpcType } from './protos/text_into_commands';
-import { TextToCommandsResponse } from "./protos/text_to_commands/TextToCommandsResponse";
+import { TextToCommandsResponse, TextToCommandsResponse__Output } from "./protos/text_to_commands/TextToCommandsResponse";
 import { TextToCommandsRequest } from "./protos/text_to_commands/TextToCommandsRequest";
 
 const PORT = 50051;
@@ -26,16 +26,50 @@ export const textIntoCommandsClient = new textToCommandsPackage(
 );
 
 
-export function convertTextToCommands(text: string) {
+// Parse a string like "\ncursor_movement_to_line5" into a structured command
+function parseCommandString(commandStr: string) {
+  // Remove any leading/trailing whitespace or newlines
+  const cleaned = commandStr.trim();
+
+  // Use regex to extract the type and value
+  // This pattern looks for letters/underscores (type) followed by digits (value)
+  const match = cleaned.match(/([a-z_]+)(\d+)/i);
+
+  if (match) {
+    return {
+      type: match[1],
+      value: match[2],
+      date: null
+    };
+  }
+
+  // If no match, return the original as type with empty value
+  return {
+    type: cleaned,
+    value: '',
+    date: null
+  };
+}
+
+export type Commands = TextToCommandsResponse__Output['commands'];
+
+export function convertTextToCommands(text: string): Promise<Commands> {
   const request: TextToCommandsRequest = {
     text: text,
   };
 
-  textIntoCommandsClient.ConvertTextToCommands(request, (err: any, response: any) => {
-    if (err) {
-      console.error('Failed to convert text to commands: ' + err);
-      return;
-    }
-    console.log('Response:', response);
+  return new Promise((resolve, reject) => {
+    textIntoCommandsClient.ConvertTextToCommands(request, (err: any, response: TextToCommandsResponse__Output | undefined) => {
+      if (err) {
+        console.error('Failed to convert text to commands: ' + err);
+        reject(err);
+        return;
+      }
+      if (!response) {
+        reject(new Error('No response from server'));
+        return;
+      }
+      resolve(response!.commands);
+    });
   });
 }

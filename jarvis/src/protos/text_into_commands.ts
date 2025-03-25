@@ -9,6 +9,7 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 
 export interface ProtoGrpcType {
   text_to_commands: {
+    Command: MessageTypeDefinition
     TextToCommands: SubtypeConstructor<typeof grpc.Client, _text_to_commands_TextToCommandsClient> & { service: _text_to_commands_TextToCommandsDefinition }
     TextToCommandsRequest: MessageTypeDefinition
     TextToCommandsResponse: MessageTypeDefinition

@@ -3,7 +3,8 @@
 import * as vscode from 'vscode';
 // import 
 import Express from 'express';
-import { listenToCommands } from './server';
+import { listenToCommands } from './listenToCommands';
+import { recordAndTranscribe } from './recorder_client';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -17,15 +18,11 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('jarvis.listen', () => {
+	const disposable = vscode.commands.registerCommand('jarvis.listen', async () => {
 		// Get port from VS Code settings, fallback to 3000 if not set
 		const config = vscode.workspace.getConfiguration('jarvis');
-		const port = config.get('serverPort', 3000); // 3000 is the default value
 
-
-		listenToCommands(port);
-
-		vscode.window.showInformationMessage(`Server started on port ${port}`);
+		await listenToCommands();
 	});
 
 	context.subscriptions.push(disposable);

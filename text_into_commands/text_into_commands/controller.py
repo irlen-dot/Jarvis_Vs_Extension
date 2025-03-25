@@ -14,16 +14,25 @@ load_dotenv()
 
 class TextToCommandsController(text_into_commands_pb2_grpc.TextToCommandsServicer):
     def __init__(self):
-        llm = OpenAI(temperature=0)
         self.agent = Agent()
 
     def ConvertTextToCommands(self, request, context):
         # Implement your logic here
         # For example:
         # Process the request.text and convert it to commands
-        commands = self.agent.execute(request.text)
-        print(commands)
-        return text_into_commands_pb2.TextToCommandsResponse(
-            commands=commands,
-            # success=True
-        )
+        response = text_into_commands_pb2.TextToCommandsResponse()
+        raw_commands = self.agent.execute(request.text)
+        commands = []
+
+        for cmd in raw_commands:
+            commands.append(
+                text_into_commands_pb2.Command(
+                    type=cmd["type"], value=cmd["value"], date=cmd["date"]
+                )
+            )
+
+        response.commands.extend(commands)
+
+        print("Response commands: ", response.commands)
+
+        return response

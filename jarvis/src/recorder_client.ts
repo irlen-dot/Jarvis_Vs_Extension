@@ -22,14 +22,18 @@ export const recordTranscriberClient = new recordTranscriberPackage.RecordTransc
     grpc.credentials.createInsecure()
 );
 
-export function recordAndTranscribe() {
-    const request: Empty = {};
+export function recordAndTranscribe(): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const request: Empty = {};
 
-    recordTranscriberClient.RecordAndTranscribe(request, (err: any, response: any) => {
-        if (err) {
-            console.error('Failed to record and transcribe: ' + err);
-            return;
-        }
-        console.log('Response from record and transcribe:', response);
+        recordTranscriberClient.RecordAndTranscribe(request, (err: any, response: any) => {
+            if (err) {
+                console.error('Failed to record and transcribe: ' + err);
+                reject(err);
+                return;
+            }
+            console.log("Response from record and transcribe: ", response);
+            resolve(response.transcribed_text);
+        });
     });
 }

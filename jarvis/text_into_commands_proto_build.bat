@@ -1,1 +1,1 @@
-npx proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=protos/ ../protos/text_into_commands.proto
+npx proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=./src/protos/ ../protos/text_into_commands.proto
