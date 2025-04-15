@@ -2,7 +2,7 @@ from langchain.tools import tool
 
 
 # Global commands list
-commands = [{"value": "1", "date": None, "type": "cursor_movement_to_line"}]
+commands = []
 
 
 def _add_command(command_type, command_value, command_date=None):
@@ -33,6 +33,27 @@ def move_cursor_to_line(line_number):
     commands.append(command)
     print(f"Cursor movement command added. Current commands: {commands}")
     return f"Cursor moved to line {line_number}"
+
+
+@tool
+def write_code(user_prompt):
+    """Writes code at the current cursor position in the editor.
+
+    Args:
+        user_prompt: User's prompt that is related to writing code
+
+    Returns:
+        str: A confirmation message that the code was written
+    """
+    print(f"Writing code: {user_prompt}")
+    command = {
+        "type": "write_code",
+        "value": user_prompt,
+        "date": None,
+    }
+    commands.append(command)
+    print(f"Write code command added. Current commands: {commands}")
+    return f"Code written: {user_prompt}"
 
 
 def get_commands():

@@ -7,6 +7,7 @@ from text_into_commands.command_service import (
     clear_commands,
     get_commands,
     move_cursor_to_line,
+    write_code,
 )
 
 load_dotenv()
@@ -15,14 +16,13 @@ load_dotenv()
 class Agent:
     def __init__(self):
         llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
-        tools = [move_cursor_to_line]
+        tools = [move_cursor_to_line, write_code]
         prompt = PromptTemplate.from_template(
-            """You are an assistant that helps convert user text input into commands.
-        
+            """
             Your goal is to understand what the user wants to do and convert their request into appropriate commands using the available tools.
 
             For example, if they say "go to the third line", you would use the move_cursor_to_line tool to move the cursor there.
-
+            If they say "go to the third line and write a function for printing 'Hello, world!'", you would use the move_cursor_to_line and write_code tools.
             IMPORTANT: Avoid using the same tool with the same arguments multiple times, as this creates redundant actions.
 
             Available Tools: {{tools}}
@@ -50,6 +50,7 @@ class Agent:
     def execute(self, text):
         print("Invoking agent...")
         self.executed_actions.clear()  # Clear previous actions
+        print("Executing agent...")
         self.agent_executor.invoke({"text": text})
         print("Agent executed.")
         commands = get_commands()
